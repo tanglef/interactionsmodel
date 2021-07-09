@@ -24,7 +24,10 @@ where for two vectors u and v, <img src="https://latex.codecogs.com/png.latex?%5
 </p>
 
 We want to see if using GPUs and more complex (in order of magnitude) algorithms can be competitive against a `Numba` accelerated Coordinate Descent.
-
+<p align="center">
+<img src="animation_objs.gif" width="500" height="500" />
+</p>  
+  
 ## Content
 
 This repository contains:
@@ -38,6 +41,5 @@ In the package, the `/examples` and `/benchmarks` directories provide source cod
 The `Data` module provides access to the genomics dataset used in Chapter 4. This dataset is from ![Sophie Lèbre](https://www.univ-montp3.fr/miap/~lebre/).
 Continuous integration is present in `/tests`.
 - Report TeX files: in the `internship_report` directory. A pre-compiled version of the report is available at the root of the repository.
-
 
 
