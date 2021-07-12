@@ -1,0 +1,610 @@
+[tlefort@brahma Documents]🦄$ /usr/bin/python /home/tlefort/Documents/phd/articles_and_others/GLMinteractions/interactionsmodel/examples/predictions_comparison.py/predictions_regul.py
+Cuda is used.
+MSE(beta) = 3513.322
+MSE(theta) = 34.007960079840316
+Lambda max are 843.2276283464771 and 138.5882379964746
+~~~~~~~~~~~~~~ Finished preparing data ~~~~~~~~~~~~~~~~
+ #########Begin CBPG#########
+~~~~~~ Beginning warmup
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/1.
+        Test MSE with zero predictive power: 6867376.0
+         Iteration max 5 with KKT criterion 0.064
+         Preliminary results: t=32.481;MSE=6483694.000
+~~~~~~ Beginning benchmark
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/10.
+        Test MSE with zero predictive power: 6867376.0
+         Iteration max 5 with KKT criterion 0.064
+         Iteration max 7 with KKT criterion 0.006
+         Iteration max 10 with KKT criterion 0.000
+         Preliminary results: t=37.324;MSE=6483647.500
+
+ ##### Begin lambdas = (57.4484, 5.7448), 2/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 0.317
+        Iteration max 7 with KKT criterion 0.049
+        Iteration max 10 with KKT criterion 0.003
+        Iteration max 15 with KKT criterion 0.000
+         Preliminary results: t=16.120;MSE=6104581.000
+
+ ##### Begin lambdas = (39.1392, 3.9139), 3/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 1.169
+        Iteration max 7 with KKT criterion 0.290
+        Iteration max 10 with KKT criterion 0.038
+        Iteration max 15 with KKT criterion 0.001
+        Iteration max 22 with KKT criterion 0.000
+         Preliminary results: t=23.541;MSE=5606391.500
+
+ ##### Begin lambdas = (26.6652, 2.6665), 4/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 2.886
+        Iteration max 7 with KKT criterion 1.015
+        Iteration max 10 with KKT criterion 0.230
+        Iteration max 15 with KKT criterion 0.021
+        Iteration max 22 with KKT criterion 0.001
+         Preliminary results: t=23.554;MSE=5168051.500
+
+ ##### Begin lambdas = (18.1668, 1.8167), 5/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 5.501
+        Iteration max 7 with KKT criterion 2.564
+        Iteration max 10 with KKT criterion 0.850
+        Iteration max 15 with KKT criterion 0.150
+        Iteration max 22 with KKT criterion 0.015
+        Iteration max 33 with KKT criterion 0.000
+         Preliminary results: t=34.447;MSE=4860121.000
+
+ ##### Begin lambdas = (12.3769, 1.2377), 6/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 7.602
+        Iteration max 7 with KKT criterion 4.326
+        Iteration max 10 with KKT criterion 1.947
+        Iteration max 15 with KKT criterion 0.546
+        Iteration max 22 with KKT criterion 0.105
+        Iteration max 33 with KKT criterion 0.009
+        Iteration max 49 with KKT criterion 0.000
+         Preliminary results: t=50.799;MSE=4666562.000
+
+ ##### Begin lambdas = (8.4323, 0.8432), 7/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 8.933
+        Iteration max 7 with KKT criterion 5.802
+        Iteration max 10 with KKT criterion 3.204
+        Iteration max 15 with KKT criterion 1.301
+        Iteration max 22 with KKT criterion 0.392
+        Iteration max 33 with KKT criterion 0.063
+        Iteration max 49 with KKT criterion 0.005
+        Iteration max 73 with KKT criterion 0.000
+         Preliminary results: t=75.036;MSE=4552148.500
+
+ ##### Begin lambdas = (5.7448, 0.5745), 8/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 9.038
+        Iteration max 7 with KKT criterion 6.585
+        Iteration max 10 with KKT criterion 4.195
+        Iteration max 15 with KKT criterion 2.164
+        Iteration max 22 with KKT criterion 0.905
+        Iteration max 33 with KKT criterion 0.253
+        Iteration max 49 with KKT criterion 0.043
+        Iteration max 73 with KKT criterion 0.003
+        Iteration max 109 with KKT criterion 0.000
+         Preliminary results: t=111.590;MSE=4490039.000
+
+ ##### Begin lambdas = (3.9139, 0.3914), 9/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 13.623
+        Iteration max 7 with KKT criterion 6.759
+        Iteration max 10 with KKT criterion 4.792
+        Iteration max 15 with KKT criterion 2.842
+        Iteration max 22 with KKT criterion 1.510
+        Iteration max 33 with KKT criterion 0.592
+        Iteration max 49 with KKT criterion 0.165
+        Iteration max 73 with KKT criterion 0.027
+        Iteration max 109 with KKT criterion 0.002
+        Iteration max 163 with KKT criterion 0.000
+         Preliminary results: t=169.272;MSE=4461029.500
+
+ ##### Begin lambdas = (2.6665, 0.2667), 10/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 25.715
+        Iteration max 7 with KKT criterion 13.047
+        Iteration max 10 with KKT criterion 4.899
+        Iteration max 15 with KKT criterion 3.342
+        Iteration max 22 with KKT criterion 1.962
+        Iteration max 33 with KKT criterion 0.988
+        Iteration max 49 with KKT criterion 0.400
+        Iteration max 73 with KKT criterion 0.110
+        Iteration max 109 with KKT criterion 0.017
+        Iteration max 163 with KKT criterion 0.001
+        Iteration max 244 with KKT criterion 0.000
+         Preliminary results: t=250.007;MSE=4449823.000
+ #########Begin CD#########
+~~~~~~ Beginning warmup
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/1.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 0.00021235157077511153
+         Preliminary results: t=32.166;MSE=6483629.758
+~~~~~~ Beginning benchmark
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 0.00021235157077511153
+         Preliminary results: t=29.175;MSE=6483629.758
+
+ ##### Begin lambdas = (57.4484, 5.7448), 2/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 0.00033831055387854576
+         Preliminary results: t=29.211;MSE=6104587.972
+
+ ##### Begin lambdas = (39.1392, 3.9139), 3/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 0.0005281266524146001
+         Preliminary results: t=30.153;MSE=5606384.133
+
+ ##### Begin lambdas = (26.6652, 2.6665), 4/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 0.008544123911182396
+         Iteration max 7 with KKT criterion 0.0009063956979041298
+         Preliminary results: t=40.096;MSE=5168045.186
+
+ ##### Begin lambdas = (18.1668, 1.8167), 5/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 0.1811960517399013
+         Iteration max 7 with KKT criterion 0.015431863620578468
+         Iteration max 10 with KKT criterion 0.0017592852939541143
+         Iteration max 15 with KKT criterion 0.0005687727538286709
+         Preliminary results: t=79.187;MSE=4860124.074
+
+ ##### Begin lambdas = (12.3769, 1.2377), 6/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 2.4029114710067088
+         Iteration max 7 with KKT criterion 0.26581847347486764
+         Iteration max 10 with KKT criterion 0.013240710194090692
+         Iteration max 15 with KKT criterion 0.0006537127983407118
+         Preliminary results: t=79.181;MSE=4666557.370
+
+ ##### Begin lambdas = (8.4323, 0.8432), 7/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 2.179997320153444
+         Iteration max 7 with KKT criterion 2.4472624077303955
+         Iteration max 10 with KKT criterion 0.2618920827115886
+         Iteration max 15 with KKT criterion 0.01117855318490183
+         Iteration max 22 with KKT criterion 0.0006099797193999015
+         Preliminary results: t=116.449;MSE=4552149.594
+
+ ##### Begin lambdas = (5.7448, 0.5745), 8/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 5.391313899636455
+         Iteration max 7 with KKT criterion 1.7086395461827013
+         Iteration max 10 with KKT criterion 2.190395149530657
+         Iteration max 15 with KKT criterion 0.1448404088902132
+         Iteration max 22 with KKT criterion 0.00930356824240492
+         Iteration max 33 with KKT criterion 0.0007589806105087822
+         Preliminary results: t=176.479;MSE=4490038.956
+
+ ##### Begin lambdas = (3.9139, 0.3914), 9/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 16.271662230373376
+         Iteration max 7 with KKT criterion 7.685824977039283
+         Iteration max 10 with KKT criterion 1.3024749192977985
+         Iteration max 15 with KKT criterion 1.825205896785576
+         Iteration max 22 with KKT criterion 0.09739489465307755
+         Iteration max 33 with KKT criterion 0.007488332865897004
+         Iteration max 49 with KKT criterion 0.0006682961168398227
+         Preliminary results: t=255.719;MSE=4461025.694
+
+ ##### Begin lambdas = (2.6665, 0.2667), 10/10.
+        Test MSE with zero predictive power: 6867376.128
+         Iteration max 5 with KKT criterion 14.349966895866332
+         Iteration max 7 with KKT criterion 13.424016612416041
+         Iteration max 10 with KKT criterion 7.3907412719822805
+         Iteration max 15 with KKT criterion 0.9101195802886912
+         Iteration max 22 with KKT criterion 1.4541921373791993
+         Iteration max 33 with KKT criterion 0.0346651647720486
+         Iteration max 49 with KKT criterion 0.012274946454260499
+         Iteration max 73 with KKT criterion 0.0006024969401114504
+         Preliminary results: t=374.882;MSE=4449815.700
+ #########Begin CBPG_acc#########
+~~~~~~ Beginning warmup
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/1.
+        Test MSE with zero predictive power: 6867376.0
+         Iteration max 5 with KKT criterion 0.001
+         Preliminary results: t=32.614;MSE=6483492.500
+~~~~~~ Beginning benchmark
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/10.
+        Test MSE with zero predictive power: 6867376.0
+         Iteration max 5 with KKT criterion 0.001
+         Iteration max 7 with KKT criterion 0.001
+         Preliminary results: t=34.594;MSE=6483585.500
+
+ ##### Begin lambdas = (57.4484, 5.7448), 2/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 0.002
+        Iteration max 7 with KKT criterion 0.001
+        Iteration max 10 with KKT criterion 0.062
+        Iteration max 15 with KKT criterion 0.000
+         Preliminary results: t=16.673;MSE=6104578.000
+
+ ##### Begin lambdas = (39.1392, 3.9139), 3/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 0.039
+        Iteration max 7 with KKT criterion 0.012
+        Iteration max 10 with KKT criterion 0.017
+        Iteration max 15 with KKT criterion 0.004
+        Iteration max 22 with KKT criterion 0.001
+        Iteration max 33 with KKT criterion 0.001
+         Preliminary results: t=35.838;MSE=5606392.500
+
+ ##### Begin lambdas = (26.6652, 2.6665), 4/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 0.362
+        Iteration max 7 with KKT criterion 0.147
+        Iteration max 10 with KKT criterion 0.057
+        Iteration max 15 with KKT criterion 0.028
+        Iteration max 22 with KKT criterion 0.008
+        Iteration max 33 with KKT criterion 0.003
+        Iteration max 49 with KKT criterion 0.001
+        Iteration max 73 with KKT criterion 0.001
+         Preliminary results: t=78.086;MSE=5168045.000
+
+ ##### Begin lambdas = (18.1668, 1.8167), 5/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 1.402
+        Iteration max 7 with KKT criterion 0.368
+        Iteration max 10 with KKT criterion 0.113
+        Iteration max 15 with KKT criterion 0.053
+        Iteration max 22 with KKT criterion 0.015
+        Iteration max 33 with KKT criterion 0.006
+        Iteration max 49 with KKT criterion 0.002
+        Iteration max 73 with KKT criterion 0.001
+         Preliminary results: t=77.272;MSE=4860118.000
+
+ ##### Begin lambdas = (12.3769, 1.2377), 6/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 2.803
+        Iteration max 7 with KKT criterion 1.113
+        Iteration max 10 with KKT criterion 0.300
+        Iteration max 15 with KKT criterion 0.044
+        Iteration max 22 with KKT criterion 0.019
+        Iteration max 33 with KKT criterion 0.005
+        Iteration max 49 with KKT criterion 0.002
+        Iteration max 73 with KKT criterion 0.001
+         Preliminary results: t=77.229;MSE=4666559.000
+
+ ##### Begin lambdas = (8.4323, 0.8432), 7/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 4.110
+        Iteration max 7 with KKT criterion 2.164
+        Iteration max 10 with KKT criterion 0.760
+        Iteration max 15 with KKT criterion 0.172
+        Iteration max 22 with KKT criterion 0.038
+        Iteration max 33 with KKT criterion 0.010
+        Iteration max 49 with KKT criterion 0.003
+        Iteration max 73 with KKT criterion 0.001
+        Iteration max 109 with KKT criterion 0.000
+         Preliminary results: t=114.932;MSE=4552147.000
+
+ ##### Begin lambdas = (5.7448, 0.5745), 8/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 4.695
+        Iteration max 7 with KKT criterion 2.859
+        Iteration max 10 with KKT criterion 1.432
+        Iteration max 15 with KKT criterion 0.497
+        Iteration max 22 with KKT criterion 0.113
+        Iteration max 33 with KKT criterion 0.014
+        Iteration max 49 with KKT criterion 0.005
+        Iteration max 73 with KKT criterion 0.001
+        Iteration max 109 with KKT criterion 0.001
+         Preliminary results: t=114.755;MSE=4490038.000
+
+ ##### Begin lambdas = (3.9139, 0.3914), 9/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 5.125
+        Iteration max 7 with KKT criterion 3.279
+        Iteration max 10 with KKT criterion 1.876
+        Iteration max 15 with KKT criterion 0.933
+        Iteration max 22 with KKT criterion 0.333
+        Iteration max 33 with KKT criterion 0.069
+        Iteration max 49 with KKT criterion 0.008
+        Iteration max 73 with KKT criterion 0.002
+        Iteration max 109 with KKT criterion 0.001
+         Preliminary results: t=115.410;MSE=4461027.500
+
+ ##### Begin lambdas = (2.6665, 0.2667), 10/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 9.692
+        Iteration max 7 with KKT criterion 3.588
+        Iteration max 10 with KKT criterion 2.235
+        Iteration max 15 with KKT criterion 1.142
+        Iteration max 22 with KKT criterion 0.611
+        Iteration max 33 with KKT criterion 0.202
+        Iteration max 49 with KKT criterion 0.043
+        Iteration max 73 with KKT criterion 0.005
+        Iteration max 109 with KKT criterion 0.001
+        Iteration max 163 with KKT criterion 0.000
+         Preliminary results: t=172.065;MSE=4449823.000
+ #########Begin PGD#########
+~~~~~~ Beginning warmup
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/1.
+        Test MSE with zero predictive power: 6867376.0
+         Iteration max 5 with KKT criterion 4.203
+         Preliminary results: t=28.861;MSE=6486945.000
+~~~~~~ Beginning benchmark
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/10.
+        Test MSE with zero predictive power: 6867376.0
+         Iteration max 5 with KKT criterion 4.203
+         Iteration max 7 with KKT criterion 1.519
+         Iteration max 10 with KKT criterion 0.363
+         Iteration max 15 with KKT criterion 0.033
+         Iteration max 22 with KKT criterion 0.001
+         Iteration max 33 with KKT criterion 0.000
+         Preliminary results: t=59.803;MSE=6483647.500
+
+ ##### Begin lambdas = (57.4484, 5.7448), 2/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 10.758
+        Iteration max 7 with KKT criterion 5.052
+        Iteration max 10 with KKT criterion 1.638
+        Iteration max 15 with KKT criterion 0.253
+        Iteration max 22 with KKT criterion 0.019
+        Iteration max 33 with KKT criterion 0.000
+         Preliminary results: t=37.661;MSE=6104582.500
+
+ ##### Begin lambdas = (39.1392, 3.9139), 3/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 21.791
+        Iteration max 7 with KKT criterion 11.992
+        Iteration max 10 with KKT criterion 5.039
+        Iteration max 15 with KKT criterion 1.279
+        Iteration max 22 with KKT criterion 0.209
+        Iteration max 33 with KKT criterion 0.014
+        Iteration max 49 with KKT criterion 0.000
+         Preliminary results: t=55.382;MSE=5606393.500
+
+ ##### Begin lambdas = (26.6652, 2.6665), 4/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 32.397
+        Iteration max 7 with KKT criterion 20.592
+        Iteration max 10 with KKT criterion 10.888
+        Iteration max 15 with KKT criterion 4.002
+        Iteration max 22 with KKT criterion 1.087
+        Iteration max 33 with KKT criterion 0.159
+        Iteration max 49 with KKT criterion 0.011
+        Iteration max 73 with KKT criterion 0.000
+         Preliminary results: t=81.964;MSE=5168047.000
+
+ ##### Begin lambdas = (18.1668, 1.8167), 5/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 38.386
+        Iteration max 7 with KKT criterion 26.939
+        Iteration max 10 with KKT criterion 16.813
+        Iteration max 15 with KKT criterion 8.288
+        Iteration max 22 with KKT criterion 3.312
+        Iteration max 33 with KKT criterion 0.843
+        Iteration max 49 with KKT criterion 0.129
+        Iteration max 73 with KKT criterion 0.009
+        Iteration max 109 with KKT criterion 0.000
+         Preliminary results: t=121.840;MSE=4860120.000
+
+ ##### Begin lambdas = (12.3769, 1.2377), 6/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 40.287
+        Iteration max 7 with KKT criterion 30.288
+        Iteration max 10 with KKT criterion 20.927
+        Iteration max 15 with KKT criterion 12.150
+        Iteration max 22 with KKT criterion 6.151
+        Iteration max 33 with KKT criterion 2.338
+        Iteration max 49 with KKT criterion 0.628
+        Iteration max 73 with KKT criterion 0.095
+        Iteration max 109 with KKT criterion 0.006
+        Iteration max 163 with KKT criterion 0.000
+         Preliminary results: t=181.865;MSE=4666562.000
+
+ ##### Begin lambdas = (8.4323, 0.8432), 7/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 38.461
+        Iteration max 7 with KKT criterion 29.795
+        Iteration max 10 with KKT criterion 21.972
+        Iteration max 15 with KKT criterion 14.663
+        Iteration max 22 with KKT criterion 8.822
+        Iteration max 33 with KKT criterion 4.299
+        Iteration max 49 with KKT criterion 1.675
+        Iteration max 73 with KKT criterion 0.442
+        Iteration max 109 with KKT criterion 0.067
+        Iteration max 163 with KKT criterion 0.004
+        Iteration max 244 with KKT criterion 0.000
+         Preliminary results: t=271.392;MSE=4552148.500
+
+ ##### Begin lambdas = (5.7448, 0.5745), 8/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 34.999
+        Iteration max 7 with KKT criterion 27.541
+        Iteration max 10 with KKT criterion 21.207
+        Iteration max 15 with KKT criterion 14.991
+        Iteration max 22 with KKT criterion 10.223
+        Iteration max 33 with KKT criterion 6.040
+        Iteration max 49 with KKT criterion 3.007
+        Iteration max 73 with KKT criterion 1.164
+        Iteration max 109 with KKT criterion 0.310
+        Iteration max 163 with KKT criterion 0.045
+        Iteration max 244 with KKT criterion 0.003
+        Iteration max 366 with KKT criterion 0.000
+         Preliminary results: t=406.556;MSE=4490039.000
+
+ ##### Begin lambdas = (3.9139, 0.3914), 9/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 30.890
+        Iteration max 7 with KKT criterion 24.215
+        Iteration max 10 with KKT criterion 19.166
+        Iteration max 15 with KKT criterion 14.346
+        Iteration max 22 with KKT criterion 10.327
+        Iteration max 33 with KKT criterion 6.934
+        Iteration max 49 with KKT criterion 4.152
+        Iteration max 73 with KKT criterion 2.078
+        Iteration max 109 with KKT criterion 0.802
+        Iteration max 163 with KKT criterion 0.204
+        Iteration max 244 with KKT criterion 0.029
+        Iteration max 366 with KKT criterion 0.002
+         Preliminary results: t=406.578;MSE=4461115.500
+
+ ##### Begin lambdas = (2.6665, 0.2667), 10/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 30.938
+        Iteration max 7 with KKT criterion 20.617
+        Iteration max 10 with KKT criterion 16.319
+        Iteration max 15 with KKT criterion 12.846
+        Iteration max 22 with KKT criterion 9.801
+        Iteration max 33 with KKT criterion 7.004
+        Iteration max 49 with KKT criterion 4.724
+        Iteration max 73 with KKT criterion 2.857
+        Iteration max 109 with KKT criterion 1.393
+        Iteration max 163 with KKT criterion 0.532
+        Iteration max 244 with KKT criterion 0.136
+        Iteration max 366 with KKT criterion 0.018
+         Preliminary results: t=406.558;MSE=4451222.500
+ #########Begin PGD_acc#########
+~~~~~~ Beginning warmup
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/1.
+        Test MSE with zero predictive power: 6867376.0
+         Iteration max 5 with KKT criterion 0.628
+         Preliminary results: t=28.791;MSE=6483963.500
+~~~~~~ Beginning benchmark
+
+ ##### Begin lambdas = (84.3228, 8.4323), 1/10.
+        Test MSE with zero predictive power: 6867376.0
+         Iteration max 5 with KKT criterion 0.628
+         Iteration max 7 with KKT criterion 0.067
+         Iteration max 10 with KKT criterion 0.077
+         Iteration max 15 with KKT criterion 0.000
+         Preliminary results: t=39.869;MSE=6483643.000
+
+ ##### Begin lambdas = (57.4484, 5.7448), 2/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 2.950
+        Iteration max 7 with KKT criterion 0.653
+        Iteration max 10 with KKT criterion 0.069
+        Iteration max 15 with KKT criterion 0.001
+        Iteration max 22 with KKT criterion 0.003
+        Iteration max 33 with KKT criterion 0.000
+         Preliminary results: t=37.665;MSE=6104581.000
+
+ ##### Begin lambdas = (39.1392, 3.9139), 3/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 8.498
+        Iteration max 7 with KKT criterion 2.910
+        Iteration max 10 with KKT criterion 0.616
+        Iteration max 15 with KKT criterion 0.047
+        Iteration max 22 with KKT criterion 0.007
+        Iteration max 33 with KKT criterion 0.003
+        Iteration max 49 with KKT criterion 0.001
+        Iteration max 73 with KKT criterion 0.001
+         Preliminary results: t=81.988;MSE=5606391.500
+
+ ##### Begin lambdas = (26.6652, 2.6665), 4/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 16.587
+        Iteration max 7 with KKT criterion 7.808
+        Iteration max 10 with KKT criterion 2.609
+        Iteration max 15 with KKT criterion 0.449
+        Iteration max 22 with KKT criterion 0.041
+        Iteration max 33 with KKT criterion 0.010
+        Iteration max 49 with KKT criterion 0.003
+        Iteration max 73 with KKT criterion 0.001
+        Iteration max 109 with KKT criterion 0.000
+         Preliminary results: t=121.860;MSE=5168045.000
+
+ ##### Begin lambdas = (18.1668, 1.8167), 5/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 23.243
+        Iteration max 7 with KKT criterion 13.715
+        Iteration max 10 with KKT criterion 6.430
+        Iteration max 15 with KKT criterion 1.908
+        Iteration max 22 with KKT criterion 0.361
+        Iteration max 33 with KKT criterion 0.030
+        Iteration max 49 with KKT criterion 0.007
+        Iteration max 73 with KKT criterion 0.002
+        Iteration max 109 with KKT criterion 0.001
+         Preliminary results: t=121.881;MSE=4860117.500
+
+ ##### Begin lambdas = (12.3769, 1.2377), 6/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 27.166
+        Iteration max 7 with KKT criterion 18.020
+        Iteration max 10 with KKT criterion 10.230
+        Iteration max 15 with KKT criterion 4.259
+        Iteration max 22 with KKT criterion 1.364
+        Iteration max 33 with KKT criterion 0.241
+        Iteration max 49 with KKT criterion 0.020
+        Iteration max 73 with KKT criterion 0.004
+        Iteration max 109 with KKT criterion 0.001
+        Iteration max 163 with KKT criterion 0.000
+         Preliminary results: t=181.717;MSE=4666559.000
+
+ ##### Begin lambdas = (8.4323, 0.8432), 7/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 26.902
+        Iteration max 7 with KKT criterion 19.556
+        Iteration max 10 with KKT criterion 13.011
+        Iteration max 15 with KKT criterion 6.784
+        Iteration max 22 with KKT criterion 2.969
+        Iteration max 33 with KKT criterion 0.884
+        Iteration max 49 with KKT criterion 0.163
+        Iteration max 73 with KKT criterion 0.014
+        Iteration max 109 with KKT criterion 0.003
+        Iteration max 163 with KKT criterion 0.001
+         Preliminary results: t=181.700;MSE=4552147.500
+
+ ##### Begin lambdas = (5.7448, 0.5745), 8/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 24.983
+        Iteration max 7 with KKT criterion 19.041
+        Iteration max 10 with KKT criterion 13.706
+        Iteration max 15 with KKT criterion 8.456
+        Iteration max 22 with KKT criterion 4.654
+        Iteration max 33 with KKT criterion 1.928
+        Iteration max 49 with KKT criterion 0.593
+        Iteration max 73 with KKT criterion 0.108
+        Iteration max 109 with KKT criterion 0.009
+        Iteration max 163 with KKT criterion 0.002
+        Iteration max 244 with KKT criterion 0.000
+         Preliminary results: t=271.457;MSE=4490039.000
+
+ ##### Begin lambdas = (3.9139, 0.3914), 9/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 21.676
+        Iteration max 7 with KKT criterion 17.355
+        Iteration max 10 with KKT criterion 13.307
+        Iteration max 15 with KKT criterion 8.913
+        Iteration max 22 with KKT criterion 5.741
+        Iteration max 33 with KKT criterion 3.010
+        Iteration max 49 with KKT criterion 1.282
+        Iteration max 73 with KKT criterion 0.383
+        Iteration max 109 with KKT criterion 0.066
+        Iteration max 163 with KKT criterion 0.005
+        Iteration max 244 with KKT criterion 0.001
+         Preliminary results: t=271.414;MSE=4461033.000
+
+ ##### Begin lambdas = (2.6665, 0.2667), 10/10.
+        Test MSE with zero predictive power: 6867376.0
+        Iteration max 5 with KKT criterion 18.169
+        Iteration max 7 with KKT criterion 14.790
+        Iteration max 10 with KKT criterion 11.773
+        Iteration max 15 with KKT criterion 8.627
+        Iteration max 22 with KKT criterion 6.050
+        Iteration max 33 with KKT criterion 3.742
+        Iteration max 49 with KKT criterion 1.994
+        Iteration max 73 with KKT criterion 0.839
+        Iteration max 109 with KKT criterion 0.249
+        Iteration max 163 with KKT criterion 0.042
+        Iteration max 244 with KKT criterion 0.003
+        Iteration max 366 with KKT criterion 0.000
+         Preliminary results: t=406.587;MSE=4449827.500
+#### Plotting

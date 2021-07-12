@@ -1,0 +1,190 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+# tex compilation
+*.pdf
+*.xml
+*.gz
+*.log
+*.fls
+*.fdb_latexmk
+*.blg
+*.bcf
+*.bbl
+*.aux
+*.toc
+*.out
+
+# DS_Store
+*.DS_Store
+
+# Vscode
+*.vscode
+
+# Image
+*.png
+These/Data/genes_data_predicted_and_predictive_variables/Computed_for_all_genes_data.tar
+These/Data/genes_data_predicted_and_predictive_variables/expression_data_genes_log_241samples_TCGA.txt
+These/Data/genes_data_predicted_and_predictive_variables/genes_all_regulatory_regions_dint_predictive_variables.txt
+These/Data/genes_data_predicted_and_predictive_variables/genes_promoter_predictive_variables.txt
+These/Data/genes_data_predicted_and_predictive_variables/README_genes_data
+*.nav
+Stage/Latex/Presentation/Presentation.snm
+*.snm
+*.xcf
+*.synctex(busy)
+These/Python/Script/Experience_Plan/.DS_Store
+These/Python/Script/Experience_Plan/.DS_Store
+These/Python/Script/Experience_Plan/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Random/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Random/Toeplitz_0/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Random/Toeplitz_0/p_50/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Random/Toeplitz_05/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Random/Toeplitz_05/p_50/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Random/Toeplitz_09/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Random/Toeplitz_09/p_50/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Strong/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Strong/Toeplitz_0/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Strong/Toeplitz_0/p_50/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Strong/Toeplitz_0/p_50/.DS_Store
+These/Tex/Papers/ECG2021/prebuiltimages/.DS_Store
+These/Python/Script/Experience_Plan/.DS_Store
+These/Python/Script/Experience_Plan/Heredity_Strong/.DS_Store
+These/Tex/Presentation/EGC2021/base_TSS.svg
+These/Tex/common_picture/logo_cnrs.svg
+These/Tex/Presentation/EGC2021/base_TSS_Core_DU_DD.svg
+These/Tex/Presentation/EGC2021/base_TSS_Core.svg
+These/Python/Script/Presentation/EGC2021/scheme_for_egc_example.jpg
+These/Tex/Presentation/EGC2021/scheme_egc2021.svg
+These/Tex/Presentation/EGC2021/scheme_egc2021_V1.svg
+These/Tex/Presentation/EGC2021/scheme_DNA_V1.svg
+These/Tex/Presentation/EGC2021/scheme_DNA.svg
+These/Tex/Presentation/EGC2021/scheme_adn_egc2021.svg
+These/Tex/Presentation/EGC2021/scheme_adn_arn_egc2021.svg
+These/Tex/Presentation/EGC2021/sceme_DNA_V3.svg
+These/Tex/Presentation/EGC2021/sceme_DNA_V2.svg
+These/Tex/Presentation/EGC2021/sceme_DNA_to_be_trunc.svg
+These/Tex/Presentation/EGC2021/sceme_DNA_runc.svg
+These/Tex/Presentation/EGC2021/sceme_DNA.svg
+These/Tex/Presentation/EGC2021/sceme_ARN_V5.svg
+These/Tex/Presentation/EGC2021/sceme_ARN_V4.svg
+These/Tex/Presentation/EGC2021/sceme_ARN_V3.svg
+These/Tex/Presentation/EGC2021/sceme_ARN_V2.svg
+These/Tex/Presentation/EGC2021/sceme_ARN_V1.svg
+These/Tex/Presentation/EGC2021/sceme_ARN_V.svg
+These/Data/genes_data_predicted_and_predictive_variables/data_abs_trans_log_short0_sb_DNCORE.txt
+These/Data/genes_data/genes_promoter_predictive_variables.txt
+These/Data/genes_data/genes_all_regulatory_regions_dint_predictive_variables.txt
+These/Data/genes_data/expression_data_genes_log_241samples_TCGA.txt
+These/Data/genes_data/data_abs_trans_log_short0_sb_DNCORE.txt
+These/Data/genes_data/Computed_for_all_genes_data.tar
+!These/Tex/keops_project/prebuilt_images/*.pdf
+These/Tex/keops_project/svg-inkscape/*
+
+# interactionsmodel
+interactionsmodel/interactionsmodel/data_management/Data/*
+!interactionsmodel/TeX/blocks_interactions/prebuilt_images/*
+!interactionsmodel/TeX/blocks_interactions/prebuilt_images/*/*
+*.json
