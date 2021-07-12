@@ -1,0 +1,271 @@
+% !TEX options=--shell-escape
+\documentclass[a4paper, twoside]{memoir}
+\usepackage[english]{babel}
+\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,nicefrac}
+
+\usepackage{./sty/sty_tl}
+\let\widering\relax
+\usepackage[titlenumbered,ruled,noend]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{fancyvrb}
+\usepackage[super]{nth}
+\usepackage{tkz-fct}
+\usepackage{enumitem}
+
+\emergencystretch=1em
+
+\graphicspath{{./prebuilt_images/}{./sources_images/}}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+
+% include svg and get pdf on the fly
+\newcommand{\executeiffilenewer}[3]{%
+\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+{\pdffilemoddate{#2}}>0%
+{\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{%
+\executeiffilenewer{#1.svg}{#1.pdf}%
+{inkscape -D #1.svg -o #1.pdf --export-latex}%
+\input{#1.pdf_tex}%
+}
+
+% in algorithms
+\SetKwFor{FOR}{For}{do}{end For}%
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+    }
+
+\usepackage[natbib=true,style=authoryear]{biblatex}
+\setlength\bibitemsep{\baselineskip}
+\bibliography{./sty/biblio.bib}
+
+\setlength{\headsep}{13.6pt}
+\setlength{\headheight}{13.6pt}
+
+%%%%%%
+% chapter style
+%%%%%%
+\usepackage{kpfonts}\setSingleSpace{1.1}\SingleSpacing
+\usepackage{xcolor,calc}
+\definecolor{chaptercolor}{gray}{0.8}%helper macros
+\newcommand\numlifter[1]{\raisebox{-2cm}[0pt][0pt]{\smash{#1}}}
+\newcommand\numindent{\kern37pt}
+\newlength\chaptertitleboxheight
+\makechapterstyle{hansen}{
+    \renewcommand\printchaptername{\raggedleft}
+    \renewcommand\printchapternum{%
+    \begingroup%
+    \leavevmode%
+\chapnumfont%
+\strut%
+\numlifter{\thechapter}%
+\numindent%
+\endgroup%
+}
+\renewcommand*{\printchapternonum}{%
+\vphantom{\begingroup%
+\leavevmode%
+\chapnumfont%
+\numlifter{\vphantom{9}}%
+\numindent%
+\endgroup}
+\afterchapternum}\setlength\midchapskip{0pt}
+\setlength\beforechapskip{0.5\baselineskip}
+\setlength{\afterchapskip}{3\baselineskip}
+\renewcommand\chapnumfont{%
+\fontsize{4cm}{0cm}%
+\bfseries%
+\sffamily%
+\color{chaptercolor}%
+}
+\renewcommand\chaptitlefont{%
+\normalfont%
+\huge%
+\bfseries%
+\raggedleft%
+}%
+\settototalheight\chaptertitleboxheight{%
+\parbox{\textwidth}{\chaptitlefont \strut bg\\bg\strut}}
+\renewcommand\printchaptertitle[1]{%
+\parbox[t][\chaptertitleboxheight][t]{\textwidth}{%
+\chaptitlefont\strut ##1\strut}%
+}
+}
+\chapterstyle{hansen}
+\aliaspagestyle{chapter}{empty} % just to save some space
+
+\setlength{\headwidth}{\textwidth}
+\pagestyle{companion}
+\definecolor{darkgreen}{rgb}{0.09, 0.45, 0.27}
+
+\setsecnumdepth{subsection}
+\settocdepth{subsection}
+\Crefname{algocf}{Algorithm}{Algorithms}
+
+\usepackage{subfiles}
+\usepackage{minted}
+\usepackage{csquotes}
+
+
+\begin{document}
+\begin{titlingpage}
+    \begin{figure}
+        \begin{subfigure}{.45\paperwidth}
+    \includegraphics[scale=1]{Logo}
+        \end{subfigure}
+    \hfill
+        \begin{subfigure}{.45\paperwidth}
+    \includegraphics[scale=.15]{imag_logo}
+        \end{subfigure}
+    \end{figure}
+        \vspace{1cm}
+    \begin{center}
+        Internship report \vspace{.5cm} Specialty: \\ {\scshape Biostatistics}
+    \end{center} \vspace{2cm}
+     \huge {\bfseries \begin{center}
+        High dimensional optimization for penalized
+        linear models with first order interactions using graphics card
+        computational power
+    \end{center} \hrule }
+    \begin{flushright} Tanguy Lefort \end{flushright}
+    \vspace{1cm}
+    \normalsize
+    \textbf{Supervised by:}
+      \begin{center}
+         \begin{tabular}{ll  }
+              M. Joseph Salmon & University of Montpellier\\
+              M. Benjamin Charlier & University of Montpellier\\
+         \end{tabular}
+        \end{center}
+    \normalsize\vspace{2cm} \textbf{Presented Thursday, July 20th 2021 with jury}:
+    \begin{center}
+        \begin{tabular}{ll}
+            M. Jean-Michel Marin & University of Montpellier \\
+            M. Paul Bastide & University of Montpellier \\
+            Mme. Elodie Brunel-Piccinini & University of Montpellier \\
+        \end{tabular}
+    \end{center}
+\end{titlingpage}
+
+\setcounter{page}{0}
+\pagenumbering{roman}
+
+\thispagestyle{plain}
+\addcontentsline{toc}{chapter}{Remerciements - Abstract}
+\begin{center}
+    \textbf{\Huge{Remerciements}}
+\end{center}
+
+Je tiens tout d'abord à remercier mes encadrants Joseph Salmon et Benjamin
+Charlier pour leur supervision tout au long de ce stage.
+Des parties plus théoriques à la programmation numérique, leurs conseils et
+explications auront été très utiles et le seront tout autant pour la suite.
+
+Je remercie également Florent Bascou pour m'avoir introduit à son travail de thèse.
+Nos nombreuses discussions ont permis de comprendre rapidement certaines subtilités
+du sujet mais aussi de découvrir d'autres méthodes possibles.
+
+Je souhaite aussi remercier Sophie Lèbre et Thomas Moreau.
+Sophie pour ses explications par rapport à la partie génomique
+de ce rapport.
+Cela a permis d'amener un apport pratique à ce travail.
+Thomas pour m'avoir guidé dans mes contributions à la librairie \texttt{BenchOpt}
+et la confiance accordée pour apporter des modifications au site de la librairie.
+
+Enfin merci à Jean-Michel Marin pour le temps consacré à ce rapport.
+
+\medskip
+\begin{center}
+    \textbf{\Huge{Abstract}}
+\end{center}
+\paragraph*{French:}
+
+Le modèle linéaire est utilisé en statistiques pour sa simplicité,
+et l'interprétabilité des résultats obtenus.
+Sur des données génomiques, les dimensions très grandes imposent d'utiliser des
+méthodes robustes qui sélectionnent les variables actives pour avoir des résultats
+interprétables pour des biologistes.
+En plus de l'effet de nos variables on cherche aussi à capturer les effets des
+interactions, ce qui augmente encore la dimension du problème et les phénomènes
+de colinéarité.
+Pour pallier à cela, nous considérons l'Elastic-Net sur le problème augmenté.
+La descente par coordonées \citep{wu2008coordinate} est très utilisée
+pour résoudre ce type de problèmes, mais ce n'est pas l'unique possibilité.
+Nous utilisons la structure du problème avec interactions du premier ordre pour
+paralléliser des algorithmes de descente de gradient proximal.
+Ceux-ci sont connus pour être plus lents à converger du point de vue de la
+complexité, mais utiliser la parallélisation sur carte graphique permet dans
+certaines situations d'être plus rapide.
+Ce travail sur les méthodes d'optimisation s'inscrit dans le
+développement de la librairie \texttt{BenchOpt} permettant de comparer
+facilement différents algorithmes.
+
+\paragraph*{English:}
+
+Linear models are used in statistics for their simplicity and the
+interpretability of the results.
+On genomics datasets, large dimensions need robust methods that induce sparsity
+to select interpretable active features for biologists.
+In addition to the main features, we also capture the effects of the interactions,
+which increase the dimension of the problem and the multicolinearity.
+To counteract these issues, we use the Elastic-Net on the augmented problem.
+Coordinate Descent \citep{wu2008coordinate} is mostly used nowadays for that,
+but there are other methods available.
+We exploit the structure of our problem with first order interactions to
+use parallelized proximal gradient descent algorithms.
+Those are known to be more computationally demanding in order of magnitude,
+but parallelizing on a graphics card let us be faster in some situations.
+This work is set in the development of the \texttt{BenchOpt} library.
+This library let us easily compare different optimization algorithms.
+
+\paragraph{Github repository}
+The code to generate the Figures and other results in this report is available at:
+\begin{center}
+    \url{https://github.com/tanglef/interactionsmodel}
+\end{center}
+
+\newpage
+\begin{KeepFromToc}
+\tableofcontents
+\end{KeepFromToc}
+
+\newpage
+\pagenumbering{arabic}
+\chapter{Introduction}
+\subfile{sections/introduction.tex}
+
+
+\chapter{Elastic-Net estimator with interactions}\label{chap:GLM}
+\subfile{sections/glm_interactions.tex}
+
+
+\chapter{Parallel numerical scheme for linear models with interactions}
+\label{chap:an}
+\subfile{sections/ana_num.tex}
+
+
+\chapter{Application to genomics dataset} \label{chap:genom}
+\subfile{sections/condition_numbers.tex}
+
+
+\chapter{The BenchOpt library}\label{chap:benchopt}
+\subfile{sections/benchopt.tex}
+
+\chapter{Conclusion}
+\subfile{sections/conclusion.tex}
+
+\printbibliography
+
+\appendix
+\subfile{sections/annex_cv.tex}
+\subfile{sections/annex_double_interactions.tex}
+
+\end{document}
