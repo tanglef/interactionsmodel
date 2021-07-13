@@ -584,7 +584,7 @@ To stop our solvers, we can look at how much we violate these conditions.
 Simplifying the lines hereafter, let us consider an Elastic-Net problem
 with $W\in\bbR^{n\times p}$:
 \begin{align}\tag{$\mathcal{P}_{enet}$}
-	\argmin_{w\in\bbR^n}
+	\argmin_{w\in\bbR^p}
 	\frac{1}{2n} \|y - Ww\|^2_2 + \lambda_1 \|w\|_1 +
 	\frac{\lambda_2}{2}\|w\|^2_2 = \argmin F_{enet}(w)
 	\enspace.
@@ -607,7 +607,7 @@ For a vector $u\in\bbR^n$ and a set $E\subset \bbR^n$ it means:
 We will consider the $\infty$-norm to have all coordinates below $\epsilon$
 in absolute value:
 \begin{align}\label{eq:eps_kkt}
-	\inf_{h\in \partial\cP_{enet}(w)} \|h\|_\infty\leq\epsilon\enspace.
+	\inf_{h\in \partial F_{enet}(w)} \|h\|_\infty\leq\epsilon\enspace.
 \end{align}
 
 We can consider the problem coordinate-wise as we will take the maximum over

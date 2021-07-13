@@ -361,3 +361,5 @@ interactionsmodel/interactionsmodel/data_management/Data/*
 !interactionsmodel/TeX/blocks_interactions/prebuilt_images/*
 !interactionsmodel/TeX/blocks_interactions/prebuilt_images/*/*
 *.json
+
+*.vrb
