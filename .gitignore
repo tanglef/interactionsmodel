@@ -355,7 +355,7 @@ These/Data/genes_data/Computed_for_all_genes_data.tar
 !These/Tex/keops_project/prebuilt_images/*.pdf
 These/Tex/keops_project/svg-inkscape/*
 !report_Lefort_Tanguy.pdf
-
+!interactionsmodel/TeX/internship_beamer/gif/*.pdf
 # interactionsmodel
 interactionsmodel/interactionsmodel/data_management/Data/*
 !interactionsmodel/TeX/blocks_interactions/prebuilt_images/*

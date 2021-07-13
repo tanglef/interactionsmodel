@@ -1,7 +1,7 @@
 \documentclass[10pt,aspectratio=43]{beamer}
 
 \usepackage{graphicx}
-\graphicspath{{../internship_report/prebuilt_images/}}
+\graphicspath{{../internship_report/prebuilt_images/}{../internship_beamer/gif/}}
 \usepackage[rotationcw % clockwise, default is counterclockwise
 			]{beamerthemeGlobalUniNA}
 
@@ -9,7 +9,6 @@
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{csquotes}
-\usepackage{amsmath,amsfonts,amsthm,amssymb}
 \usepackage{copyrightbox}
 \usepackage{cleveref}
 \usepackage{hyperref}
@@ -52,6 +51,7 @@
 \newcommand{\cRm}[1]{\textsc{\romannumeral #1}}
 
 \usepackage{csquotes}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,11 +101,12 @@
     \tableofcontents
 \end{frame}
 
-\section*{Introduction}
+\section{Introduction}
 
 %%%%%%%%%%%%%%%%%%%%%%
 % Introduction
 %%%%%%%%%%%%%%%%%%%%%%
+\subsection{Linear model with penalties}
 \begin{frame}{Introduction}{The Linear Model}
 We denote $X \in \bbR^{n \times p}, y \in \bbR^n$ and
 $\beta \in \bbR^p$ such that $y\simeq X\beta$. \\
@@ -139,24 +140,150 @@ Problems with high dimensions:
 \end{onlyenv}\end{itemize}
 \end{frame}
 
-\begin{frame}{Introduction}{Elastic-Net\footnote[frame]{\citet{Zou_Hastie05}}
-             estimator}
-Combination of LASSO\footnote[frame]{\citet{Tibshirani96}} and
-Ridge\footnote[frame]{\citet{Tikhonov43}}:
+\subsection{Elastic-Net with interactions}
+\begin{frame}{Introduction}{Elastic-Net estimator \citep{Zou_Hastie05}}
+Combination of LASSO \citep{Tibshirani96} and
+Ridge\citep{Tikhonov43}:
 \begin{block}{Elastic-Net}
 Considering $\lambda_1,\lambda_2>0$ penalties,
 \begin{align*}
-    \hat\beta^{enet} \in \frac{1}{2n}\norm{y - X\beta}_2^2
+    \hat\beta^{enet} \in \argmin_{\beta \in \bbR^p}\frac{1}{2n}\norm{y - X\beta}_2^2
     + \lambda_1 \norm{\beta}_1
     + \frac{\lambda_2}{2} \norm{\beta}_2^2 \enspace.
 \end{align*}
 \end{block}
+\begin{onlyenv}<2>
+    And if we add the first order interactions to the model:
+    \begin{block}{Elastic-Net with interactions}
+    The interactions matrix is $Z\in\bbR^{n\times q}$, $q=\tfrac{p(p+1)}{2}$
+     and coefficients are $\Theta\in\bbR^q$.
+        \begin{align*}
+        \hat\beta^{\textcolor{red}{inter}}
+        \in \argmin_{\substack{\beta \in \bbR^p \\ \Theta \in \bbR^q}}
+        \frac{1}{2n}\norm{y - X\beta - Z\Theta}_2^2
+        & + \lambda_{\beta,\ell_1} \norm{\beta}_1
+        + \frac{\lambda_{\beta, \ell_2}}{2} \norm{\beta}_2^2 \\
+        & \textcolor{red}{+ \lambda_{\Theta,\ell_1} \norm{\Theta}_1
+        + \frac{\lambda_{\Theta, \ell_2}}{2} \norm{\Theta}_2^2}
+        \enspace.
+    \end{align*}
+\end{block}
+\end{onlyenv}
+\end{frame}
+
+\begin{frame}{Optimization problem}
+\textbf{Our goal:} Solve the Elastic-Net problem
 \begin{itemize}
-    \item The higher $\lambda_1$, the sparser $\beta$.
-    \item The higher $\lambda_2$, the closer $\beta$ will be to $0_p$.
+    \item for high dimensional genomics data,
+    \item using graphics card parallelization,
+    \item at least as fast as currently used algorithms like Coordinate Descent
+    with interactions \citep{Bascou_Lebre_Salmon20}.
+\end{itemize}
+
+\begin{onlyenv}<2>
+\textbf{Problems:}
+    \begin{itemize}
+        \item the interactions matrix is not storable in high dimensions,
+        \item graphics cards need a lot of data to parallelize operations
+        efficiently,
+        \item we use solvers, but when do we stop them ?
+    \end{itemize}
+\end{onlyenv}
+\end{frame}
+
+\section{Gradient Descent solvers}
+\begin{frame}{From gradient to coordinate descent
+    }{On least squares problem}
+Minimize $F(\beta)=\frac{1}{2n}\norm{y - X\beta}_2^2$:
+with step $\eta>0$ at epoch $k\in\bbN$,
+\begin{block}{Gradient Descent: 1 problem of dimension p}
+\[\beta^{k+1} \longleftarrow \beta^k - \eta \LaTeXunderbrace{\frac{1}{n}X^\top (X\beta^k - y)}_{
+    \frac{\partial F}{\partial \beta}(\beta^k)
+}\enspace.\]
+\end{block}
+\begin{onlyenv}<2>
+\begin{block}{Coordinate Descent: p problems of dimension 1}
+For $j=1,\dots,p$,
+\[\beta^{k+1}_j \longleftarrow \beta^k_j - \eta \LaTeXunderbrace{\frac{1}{n}x_j^\top (X\beta^k - y)}_{
+    \frac{\partial F}{\partial \beta_j}(\beta^k)
+}\enspace.\]
+\end{block}
+\end{onlyenv}
+\end{frame}
+
+\begin{frame}{Visualization of the behavior}
+\foreach \index in {1, ..., 12}{
+    \begin{onlyenv}<\index>
+        \begin{figure}
+        \centering
+        \includegraphics[width=.8\textwidth, clip,
+        trim={0cm 0cm 0cm 1.5cm}]{temp\index.pdf}\par%
+        \end{figure}
+    \end{onlyenv}
+}
+\end{frame}
+
+\subsection{Proximal operator}
+\begin{frame}{And with a non differentiable function?}{Proximal operators}
+\[\argmin_{\beta\in \bbR^p}
+\LaTeXunderbrace{\frac{1}{2n}\norm{y-X\beta}_2^2}_{\text{smooth } F(\beta)} +
+\LaTeXunderbrace{
+    \lambda_1 \norm{\beta}_1 + \frac{\lambda_2}{2}\norm{\beta}_2^2}_{
+\text{non-smooth separable } g(\beta)
+}\]
+\begin{onlyenv}<2>
+Gradient descent on $F$:
+\[\beta^{k+1} \longleftarrow \beta^k - \eta \frac{1}{n}X^\top(X\beta - y)\]
+\end{onlyenv}
+
+\begin{onlyenv}<3>
+\textcolor{red}{Proximal} Gradient descent on $F+g$:
+\[\beta^{k+1} \longleftarrow
+\textcolor{red}{\prox_{\eta g}\big( }\beta^k -
+ \eta \frac{1}{n}X^\top(X\beta - y)\textcolor{red}{\big)}\enspace.\]
+
+\begin{block}{Proximal operator}
+Let $f$ a convex proper closed function, for $\mu>0$:
+\begin{align*}
+\prox_{\mu f}(u) = \argmin_{x\in\dom f}\left\{
+    f(x) + \frac{1}{2\mu}\norm{x-u}_2^2
+\right\} \enspace.
+\end{align*}
+\end{block}
+\end{onlyenv}
+
+\end{frame}
+
+
+\subsection{Accelerations}
+\begin{frame}{Accelerate the algorithms}
+Possibilities to use accelerations:
+\begin{itemize}
+    \setlength\itemsep{1em}
+    \item Theoretical:
+    \begin{itemize}
+        \item inertial: heavy ball-like \citep{nesterov27method},
+        \item structure of the iterates: \citep{bertrand2021anderson},
+        \item stochastic directions: \citep{nesterov2012efficiency}.
+    \end{itemize}
+    \item Computational:
+    \begin{itemize}
+        \item \texttt{Numba} library: \citep{lam2015numba},
+        \item GPU acceleration with \texttt{CUDA}.
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
+
+
+\subsection{First order interactions}
+\begin{frame}{Building the interactions}{First order interactions by block}
+See the interactions as blocks generated from $X=[x_1|\dots|x_p]$:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.9\textwidth]{building_interactions.pdf}
+\end{figure}
+\end{frame}
 
 
 
