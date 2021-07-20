@@ -1,0 +1,36 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+We have presented an implementation of gradient descent methods using the GPU
+to solve a penalized linear model with first order interactions in high dimensional setting.
+Different optimization algorithms exploiting the structure of the problem have been compared
+against vanilla (and warm) coordinate descent.
+We have applied our algorithms to both simulated and real datasets
+using the distance to the subdifferential as stopping criterion
+for our estimator.
+We have also noticed that the condition number and the values of the penalties lead to
+different performances.
+Overall, on a path with highly regularized genomics data, accelerated proximal
+gradient descent with \texttt{CUDA} backend lead to better time performances.
+We also have presented a way to make easy and reproducible benchmarks with the
+\texttt{BenchOpt} library.
+Visualizations being a key element, we improved their website for a better-looking
+experience and device-free access.
+
+\medskip
+
+Possible future work could be about looking for better bounds for the convergence
+of the distance to the subdifferential.
+Improvements on the \texttt{BenchOpt} website and library are also still being
+made.
+It could also be interesting to look at the performances of the algorithms
+with \texttt{CUDA} against current optimization algorithms
+into the \texttt{R} libraries.
+And finally, we used the product to generate our interactions.
+For biologists, it is often interesting to consider $\min$ or $\max$ functions
+instead.
+They lead in practice to different behaviors in time consumption that could
+also be studied.
+
+\end{document}

@@ -1,0 +1,366 @@
+% Adapted from FLorent Bascou's
+
+%%%  command for math norm %%%
+
+\newcommand{\norme}[1]{\left \Vert #1 \right \Vert}
+\newcommand{\abs}[1]{\left \vert #1 \right \vert}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit for co-authors:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Comment the two following lines if needed when done:
+\usepackage[textwidth=1.7cm, textsize=scriptsize]{todonotes}
+\setlength{\marginparwidth}{1.7cm}
+
+\newcommand{\jo}[1]{\todo[color=green!20]{\textbf{ JS:} #1}}
+
+\newcommand{\bc}[1]{\todo[color=blue!20]{\textbf{ BC:} #1}}
+
+\newcommand{\tl}[1]{\todo[color=orange!20]{\textbf{ TL:} #1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorems env
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{definition}{Definition}[section]
+% \newtheorem{proposition}{Proposition}[section]
+% \newtheorem{definition*}{Definition}
+% \newtheorem{proposition*}{Proposition}
+% \newtheorem{corollary}{Corollary}[section]
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{example}[theorem]{Example}
+% \newtheorem{proposition}[theorem]{Proposition}
+
+% rem see e.g. https://www.overleaf.com/learn/latex/Theorems_and_proofs
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Color shortcuts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\blue}{\color{blue}}
+\newcommand{\red}{\color{red}}
+\definecolor{dgray}{gray}{0.2}
+\newcommand{\dgray}{\color{dgray}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Latin abbreviations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xspace}
+\newcommand{\ie}{{\em{i.e.,}}\xspace}
+\newcommand{\etal}{{\em{et al.}}\xspace}
+\newcommand{\eg}{{\em{e.g.,}}\xspace}
+\newcommand{\lcf}{{\em cf.\xspace}}
+\newcommand{\st}{{{s.t.}}\xspace}
+\newcommand{\iid}{{\em{i.i.d.}}\xspace}
+\newcommand{\VA}{{\em v.a. {}}}
+\newcommand{\rem}{\underline{Rem}:~}
+\newcommand{\wrt}{w.r.t.\xspace}
+\newcommand{\ow}{o.w.\xspace}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Style mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% cal letters
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cK}{\mathcal{K}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cT}{\mathcal{T}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+% bold letters (upper case)
+\newcommand{\bfA}{\mathbf{A}}
+\newcommand{\bfB}{\mathbf{B}}
+\newcommand{\bfC}{\mathbf{C}}
+\newcommand{\bfD}{\mathbf{D}}
+\newcommand{\bfE}{\mathbf{E}}
+\newcommand{\bfF}{\mathbf{F}}
+\newcommand{\bfG}{\mathbf{G}}
+\newcommand{\bfH}{\mathbf{H}}
+\newcommand{\bfI}{\mathbf{I}}
+\newcommand{\bfJ}{\mathbf{J}}
+\newcommand{\bfK}{\mathbf{K}}
+\newcommand{\bfL}{\mathbf{L}}
+\newcommand{\bfM}{\mathbf{M}}
+\newcommand{\bfN}{\mathbf{N}}
+\newcommand{\bfO}{\mathbf{O}}
+\newcommand{\bfP}{\mathbf{P}}
+\newcommand{\bfQ}{\mathbf{Q}}
+\newcommand{\bfR}{\mathbf{R}}
+\newcommand{\bfS}{\mathbf{S}}
+\newcommand{\bfT}{\mathbf{T}}
+\newcommand{\bfU}{\mathbf{U}}
+\newcommand{\bfV}{\mathbf{V}}
+\newcommand{\bfW}{\mathbf{W}}
+\newcommand{\bfX}{\mathbf{X}}
+\newcommand{\bfY}{\mathbf{Y}}
+\newcommand{\bfZ}{\mathbf{Z}}
+
+% bold letters (lower case)
+\newcommand{\bfa}{\mathbf{a}}
+\newcommand{\bfb}{\mathbf{b}}
+\newcommand{\bfc}{\mathbf{c}}
+\newcommand{\bfd}{\mathbf{d}}
+\newcommand{\bfe}{\mathbf{e}}
+\newcommand{\bfbf}{\mathbf{f}}
+\newcommand{\bfg}{\mathbf{g}}
+\newcommand{\bfh}{\mathbf{h}}
+\newcommand{\bfi}{\mathbf{i}}
+\newcommand{\bfj}{\mathbf{j}}
+\newcommand{\bfk}{\mathbf{k}}
+\newcommand{\bfl}{\mathbf{l}}
+%\newcommand{\fbm}{\mathbf{m}} % not compatible with bm package.
+\newcommand{\bfn}{\mathbf{n}}
+\newcommand{\bfo}{\mathbf{o}}
+\newcommand{\bfp}{\mathbf{p}}
+\newcommand{\bfq}{\mathbf{q}}
+\newcommand{\bfr}{\mathbf{r}}
+\newcommand{\bfs}{\mathbf{s}}
+\newcommand{\bft}{\mathbf{t}}
+\newcommand{\bfu}{\mathbf{u}}
+\newcommand{\bfv}{\mathbf{v}}
+\newcommand{\bfw}{\mathbf{w}}
+\newcommand{\bfx}{\mathbf{x}}
+\newcommand{\bfy}{\mathbf{y}}
+\newcommand{\bfz}{\mathbf{z}}
+
+% bold greek letters
+\newcommand{\bbeta}{{\boldsymbol\beta}}
+\newcommand{\bmu}{{\boldsymbol\mu}}
+\newcommand{\bxi}{{\boldsymbol\xi}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand\bSigma{{\boldsymbol\Sigma}}
+\newcommand\bOmega{{\boldsymbol\Omega}}
+\newcommand{\beps}{{\boldsymbol\eps}}
+\newcommand{\bepsilon}{{\boldsymbol\varepsilon}}
+\newcommand{\bfepsilon}{{\boldsymbol\varepsilon}}
+\newcommand{\bftheta}{{\boldsymbol\theta}}
+\newcommand{\bfbeta}{{\boldsymbol\beta}}
+
+% bb letters
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+%\newcommand{\bbI{\mathbb{I}}
+\newcommand{\bbI}{\mathds{1}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Indicator function
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{dsfont}
+\newcommand{\ind}{\mathds{1}}
+\def\1{\mathbf 1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ticks and crosses
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\yesmark}{{\color{blue}\ding{51}}}%
+\newcommand{\nomark}{{\color{red}\ding{55}}}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% defintion symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\eqdef}{\stackrel{\Delta}{=}}
+\newcommand{\deq}{\stackrel{\scriptscriptstyle\triangle}{=}}
+\newcommand{\defeq}{\stackrel{\rm def}{=}}
+\def\isdef{\defeq}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% maths symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\median}{Med}
+\DeclareMathOperator{\MAD}{MAD}
+\DeclareMathOperator{\MSE}{MSE}
+\DeclareMathOperator{\MOM}{Mom}
+\DeclareMathOperator{\MLE}{MLE}
+\DeclareMathOperator{\ST}{ST}
+\DeclareMathOperator{\STsmall}{{\small ST}}
+\DeclareMathOperator{\SNR}{SNR}
+\DeclareMathOperator{\Card}{Card}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\corr}{corr}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\Var}{\bbV ar}
+\DeclareMathOperator{\Cov}{Cov} % \def\Cov{\mathop{\rm Cov}\nolimits}
+\DeclareMathOperator{\pred}{pred}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\pen}{pen}
+\DeclareMathOperator{\vect}{vec}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\prox}{prox}
+\DeclareMathOperator{\rang}{rang}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\epi}{epi}
+\DeclareMathOperator{\ri}{ri}
+\DeclareMathOperator{\aff}{aff}
+\DeclareMathOperator{\res}{residuals}
+\DeclareMathOperator{\resint}{res_{int}}
+\DeclareMathOperator{\jdb}{jac\_d\_{beta}}
+\DeclareMathOperator{\jdt}{jac\_d\_{theta}}
+\DeclareMathOperator{\old}{old}
+\DeclareMathOperator{\std}{std}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\itr}{itr}
+\DeclareMathOperator{\gapm}{gap}
+\DeclareMathOperator{\new}{new}
+
+
+
+
+\newcommand{\argmin}{\mathop{\mathrm{arg\,min}}}
+\newcommand{\argmax}{\mathop{\mathrm{arg\,max}}}
+\def\essinf{\mathop{\rm ess\, inf}}
+\def\esssup{\mathop{\rm ess\, sup}}
+\def\supp{\mathop{\rm supp}}
+
+
+\def\expec{{\EXP}}
+\def\IND#1{{\mathbb I}_{{\left[ #1 \right]}}}
+
+\usepackage{mathabx} % for \vvvert operator norms
+
+
+\newcommand{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand{\bnorm}[1]{\big \lVert #1 \big \rVert}
+\newcommand{\bbnorm}[1]{\bigg \lVert #1 \bigg \rVert}
+\newcommand{\normin}[1]{\lVert #1 \rVert}
+
+\usepackage{mathtools}
+
+\def\@tvsp{\mathchoice{{}\mkern-4.5mu}{{}\mkern-4.5mu}{{}\mkern-2.5mu}{}}
+\def\ltrivert{\left|\@tvsp\left|\@tvsp\left|}
+\def\rtrivert{\right|\@tvsp\right|\@tvsp\right|}
+\newcommand\tnorm[1]{\ltrivert#1\rtrivert} % triple norm
+
+
+% Elodie's one: to merge/erase:
+
+\newcommand{\disp}{\displaystyle}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\esp}{\mathbb E}
+\newcommand{\prob}{\mathbb P}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\Int}{\mathrm{int}\,}
+\newcommand{\Cl}{\mathrm{adh}\,}
+\newcommand{\ec}{\text{e-c}\,}
+\newcommand{\trait}{\begin{center}\rule{3cm}{.3pt}\end{center}}
+
+
+% Integrales faster
+\newcommand{\inte}[4][\mathrm{x}]{\displaystyle\int_{#2}^{#3}#4\ \mathrm{d#1}}
+\newcommand{\inteinf}[4][\mathrm{x}]{\displaystyle\underline{\int_{#2}^{#3}}#4\ \mathrm{d#1}}
+\newcommand{\intesup}[4][\mathrm{x}]{\displaystyle\bar{\int_{#2}^{#3}}#4\ \mathrm{d#1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Langage symbols (Python etc.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Python}{\texttt{Python}\xspace}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Langage french (2nd etc.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\nde{\up{nde}\xspace}
+\def\nd{\up{nd}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Intership report shortcuts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{pgfplots} % plots with tikz
+\newcommand{\ns}{\emph{n}\xspace}
+\newcommand{\nf}{\emph{p}\xspace}
+\newcommand{\nes}{\emph{q}\xspace}
+\newcommand{\skl}{Sklearn\xspace}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thesis report shortcuts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\wbeta}{\widehat{\beta}}
+\newcommand{\wTheta}{\widehat{\Theta}}
+
+\usepackage{stmaryrd}
+\newcommand{\logreg}{Logistic Regression\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Algorithm shortcuts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\pluseq}{\mathrel{+}=}
+\newcommand{\minuseq}{\mathrel{-}=}
+\newcommand{\timeseq}{\mathrel{*}=}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WINTER notations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\branch}[2]{\mathcal{B}_{#1}(#2)}

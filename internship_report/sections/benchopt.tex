@@ -1,0 +1,158 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+Throughout this report, multiple benchmarks were executed, with different
+datasets, solvers and parameters. As a general rule, scientific results should
+be reproducible, but in practice, this can become quite tideous and very time
+consuming. This is where \texttt{BenchOpt} can help.
+\begin{center}
+    \url{https://benchopt.github.io/}
+\end{center}
+%
+\paragraph*{}
+%
+Created by Thomas Moreau\footnote{\url{https://tommoral.github.io/about.html}},
+Alexandre Gramfort\footnote{\url{http://alexandre.gramfort.net/}},
+Joseph Salmon\footnote{\url{http://josephsalmon.eu/}},
+Tom Dupré la Tour\footnote{\url{https://tomdlt.github.io/}}
+and Mathurin Massias\footnote{\url{https://mathurinm.github.io/}},
+this \texttt{Python} library enables the users to easily compare cross-languages
+optimization solvers and with easy reproducibility.
+In practice, we already saw an example with \Cref{fig:benchopt} of what this
+library can produce.
+And how it works is quite simple if we look at what is an optimization problem.
+Indeed, it is made of (at least) three components:
+\begin{enumerate}[label=$\bullet$]
+    \item an objective to minimize,
+    \item a solver that will run until a criterion stops it (the criterion can
+    be a maximum number of epochs or a precision for example),
+    \item a dataset which can be simulated or downloaded.
+\end{enumerate}
+Each of these components can be matched with a single file.
+And to make this even easier, templates for each are available on the
+website and repository.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=.7\textwidth]{benchopt_res_index}
+    \caption{Index page of the \texttt{BenchOpt} results webpage.
+    Each problem can be clicked on and lead to the available files.
+    Hovering on one displays the number of files inside.}
+    \label{fig:index_results}
+\end{figure}
+Several optimization problems like the LASSO, Logistic Regression with penalties,
+Ordinary Least Squares \dots are already available on the main repository of the
+library.
+And after cloning the chosen one (for example \texttt{benchmark\_lasso}), a simple
+
+\begin{center}
+\begin{minipage}{8cm}
+\begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    bgcolor=chaptercolor]{shell-session}
+    $ benchopt run ./benchmark_lasso
+\end{minted}
+\end{minipage}
+\end{center}
+will run all solvers on the datasets. Option flags are available to only run on
+some.
+But sometimes one might want to see how behaves a solver on some examples
+before using it.
+And this, without needing to code it and take a certain time to
+run the comparisons.
+This is where the other side of the \texttt{BenchOpt} website comes in.
+This website had a pre-existing base that we worked on during the internship to
+present more informations to the users.
+\begin{center}
+    \url{https://benchopt.github.io/results/}
+\end{center}
+%
+\paragraph*{Choose the problem to solve.}
+%
+The \texttt{results} part's strength of \texttt{BenchOpt} results in the easy
+access and visualizations of benchmarks quickly, on a website, but with all the
+informations that one might need.
+Currently there are $8$ different optimization problems available
+(see \Cref{fig:index_results}) and several benchmarks in each.
+%
+\paragraph*{Choose the benchmark}
+%
+As aforementioned, on one problem we can benchmark several solvers on
+several datasets.
+Sometimes, the hardware plays an important role in the resulting
+performances.
+For example, with CPUs, an Intel Core i3 can not be expected
+to be as fast as an Intel Core i9.
+So for the benchmarks to be useful, hardware
+related informations are displayed (\Cref{fig:benchs}), with more informations
+one click away.
+As more users come, more examples are needed for the community. With a single
+command\footnote{More information at \url{https://benchopt.github.io/publish.html\#publish-doc}}
+users can publish their results on the website.
+This participative building can lead to many available files.
+This is why we created a filter for the main system
+information in the sidebar (another filter is available above the table where user
+can directly write words).
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{benchopt_filter}
+    \caption{Page of the availables benchmark for the Logistic Regression with
+    $\ell_2$ penalty. There are three benchmarks available. The last one was
+    run on four different datasets. Only the last two have system information
+    available. Filters are inside the sidebar on the left.}
+    \label{fig:benchs}
+\end{figure}
+Users only have to click on the benchmark they want, select the visualization and
+get an interactive plot using \texttt{Plotly} directly available.
+%
+\paragraph*{Programming side}
+%
+The goal of this static and github-pages supported website is that it can expand easily
+and with as few maintenance as possible.
+Typically, if another problem is added, a new \emph{box} does not need
+to be manually added to the main page.
+This is made possible by \texttt{Mako}\footnote{\url{https://www.makotemplates.org/}}.
+This library lets us use some \texttt{Python} programming directly inside an
+\texttt{HTML} template.
+The syntax is very close to \texttt{PHP}, only without the need of a server.
+\texttt{CSS} is loaded to modify the style of the objects (typically the colors,
+sizes and some animations).
+And finally \texttt{Javascript} performs actions like on-click responses when
+the user clicks on a button (like with the filters).
+%
+\paragraph*{Portability}
+%
+Hovering, appearing sidebar, buttons and on-click actions are often well working
+on computers.
+However, mobile devices are a non-negligible part of devices from
+which we browse the internet everyday.
+So we adapted the website to mobile devices, for example by removing the sidebar
+and using a filter menu (\Cref{fig:mobile_filter}) to have a better experience.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.4\textwidth]{mobile_filter.pdf}
+    \caption{Mobile filtering is not made with the sidebar, but in a menu over
+    the page. This allows flexibility for different smaller screen sizes.}
+    \label{fig:mobile_filter}
+\end{figure}
+%
+\paragraph*{Results page}
+%
+After selecting the benchmark of your choice, the page of the results appear.
+In the system informations, we have besides the number of CPUs, ram, platform
+and processor that were available before.
+Added to them are the \texttt{Numpy} and \texttt{Scipy} versions alongside
+the \texttt{Blas} and \texttt{Lapack} libraries.
+Several dropdown menus allow us to change the datasets, objectives measured and
+also the kind of the plot (suboptimality curve, histogram,\dots).
+One last button was added using \texttt{PlotlyJs} to be able to toggle
+between a plot in \emph{loglog} scale and \emph{semilog-y}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{benchopt_results}
+    \caption{Page of the results for the quantile regression.}
+    \label{fig:benchopt_quantile_reg}
+\end{figure}
+\end{document}

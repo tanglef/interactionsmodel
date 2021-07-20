@@ -1,0 +1,204 @@
+% \documentclass[main.tex]{subfiles}
+
+% \begin{document}
+% \begin{itemize}
+%     \item it is possible to be very accurate with \logreg + Kmeans - let's stay in only supervised setting (for now) \tl{Some parts will have no real place in an article - but are herer for now for the internship report later, labeled IR in comments}
+%     \item explain why uncertainty is important to consider
+%     \item how can we use it in practice - CIFAR-10H (H for Human\dots)
+%     \item CNN are widely used in image classification, but going back to \logreg can be useful for new methods to see the impact
+% \end{itemize}
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Present logistic regression and our data (IR)
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section{\logreg: a quick overview}
+
+% \logreg is no recent tool. However, from the $19$th century to this day \citep{cramer2002origins}, it remains widely used in different fields thanks to its simplicity of use, and the interpretability of the results in some cases.
+% Although it is not a classification model, because of the decision rules we will apply, we can use it in classification settings.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Present logistic regression: Binary setting
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{Binary classification}
+% \tl{NEED SOURCES for \logreg !}
+% Suppose our data is $X$ with $n$ samples and $p$ features. In binary classification, $y \in \cY=\{0, 1\}$ for example. Given our data, we want to know the probability $p_i$ for an individual to belong in category $\{1\}$ rather than $\{0\}$.
+% The model writes:
+
+% \begin{align}\label{eq:binarylogreg}
+%     \log \frac{p_i}{1-p_i} = \beta_0 + \beta^\top x_i\enspace,
+% \end{align}
+% where $\beta_j$, $j\in[p]$ are the coefficients to estimate in our model.
+% And rewritting \Cref{eq:binarylogreg} we get with $\sigma$ the sigmoïd function such that $\sigma(t)=(1 + e^{-t})^{-1}$, represented in \Cref{fig:sigmoid}:
+
+% \begin{align}\label{eq:problogregbinary}
+%     p_i=\bbP(Y_i=1\,|\,X) = \sigma(\beta_0 + \beta^\top x_i) = \frac{e^{\beta_0 + \beta^\top x_i}}{1+e^{\beta_0 + \beta^\top x_i}}\enspace,
+% \end{align}
+
+% \begin{figure}[ht]
+%     \centering
+%     \includegraphics[scale=.8]{sigmoid.pdf}
+%     \caption{Sigmoïd function: used to represent the probability to belong in class 1 for a known individual.}
+%     \label{fig:sigmoid}
+% \end{figure}
+
+% In the binary setting, knowing the probability to belong in one category is equivalent to knowing the likelihood. Indeed $Y_i\,|\, X \sim \cB(p_i)$ thus
+
+% \[L(\beta) = \prod_{i=1}^n p_i^{y_i} (1-p_i)^{1-y_i} \enspace.\]
+
+% The log-likelihood can be obtained easily from there $\log L(\beta) = - \sum_{i=1}^n \bfH_{bin}(y_i, p_i).$
+% The function $\bfH_{bin}$ is the binary cross-entropy loss. For two distributions $P$ and $Q$,
+
+% \[\bfH_{bin}(P, Q) = -\sum_{x\in \{0, 1\}} P(x) \log(Q(x)) \enspace.\]
+
+% And from the expression of the log-likelihood, we can then estimate our coefficients $\beta$ with a gradient-descent based scheme for example.
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Present logistic regression: More than 2 classes
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \subsection{\logreg outside the binary setting}
+
+% In our case, the binary setting is way too narrow to be used on our data. The CIFAR-10 dataset \citep{krizhevsky2009learning} is made of $60$k squared images (typically $50$k for training and $10$k for testing),
+% $32$ RGB pixels wide. When labelling the images, people were told that "It's worse to include one that shouldn't be included than to exclude one. False positives are worse than false negatives"\tl{maybe quickly explain why ?}.
+% They were also paid by the hour (not per image) so the setting was well curated \tl{teasing for bayesian article by Laurence Aitchison}. Each image is associated to one of ten categories: airplane, truck, automobile, ship, cat, dog, frog, deer, bird and horse.
+% So it is not a binary setting in general (even if we could do a human \emph{vs} machine recognition). Thankfully, it is not very difficult to adapt the binary setting to match for multiple categories: called the Multinomial \logreg.
+
+% \medskip
+
+% There are essentially two notions to tweak and change to expand our binary setting:
+% \begin{itemize}
+%     \item the estimated probability $p_i$ was the probability to belong in class $1$ (and from there we knew the other probability),
+%     \item the loss function is, as stated in its name, binary.
+% \end{itemize}
+
+% The second point is very closely related to the first: of course if we have a ground truth that states that the category is $0$,
+% then the groud truth distibution $Q$ is a Dirac mass in $0$ and the cross-entropy between our estimated distribution $P$ becomes a binary cross-entropy, resulting in
+
+% \[\bfH_{bin}(Q, P)= - Q(0)\log P(0) - Q(1)\log P(1)=-\log P(0)\enspace.\]
+
+% If we now have a ground truth distribution being $(\ind{\{Y_i=k}\})_{k=1}^{10}$ and an estimated distribution $P$ of the probability to belong in each class, then the cross-entropy is no longer binary and we get the regular cross-entropy:
+
+% \[\bfH(Q, P) = - \sum_{x \in \{1,\dots, 10\}} Q(x)\log P(x) = -\log P(Y_i) \enspace.\]
+
+% The idea to break through the binary setting to a problem with $C\in\bbN$ classes is to find a multi-dimensional replacement of the sigmoïd function. That is precisely
+% what the softmax function $\sigma$ can be used for. Indeed, our images represent only one of the classes, so the labels are mutually exclusive, applying the softmax will result in the following distribution:
+
+% \[\sigma(\bfx) = \left( \frac{e^{\bfx_1}}{\sum_{k=1}^C e^{\bfx_k}}, \dots, \frac{e^{\bfx_C}}{\sum_{k=1}^C e^{\bfx_k}}\right)\enspace.\]
+
+% So the probability for an image to belong in one class $c$ is:
+% \[\bbP(Y_i=c\,|\, X=x_i)=\frac{e^{\beta_c^\top x_i}}{\sum_{k=1}^C e^{\beta_k^\top x_i}} \enspace.\]
+
+% It is important to notice that we no longer have only one vector of $p+1$ coefficients (including the intercept) to estimate, but now $C$ vectors of $p+1$ coefficients, one for each class.
+% But like most of probability-based methods, we in fact technically only need $(C-1)(p+1)$ vectors because
+
+% \[\bbP(Y_i=C\,|\, X=x_i) = 1 - \sum_{k=1}^{C-1}\bbP(Y_i=k\,|\, X=x_i)\enspace.\]
+
+% The procedure to implement the logistic regression with a loss to optimize through a gradient descent can be viewed as a neural network \Cref{fig:logreg_nn}.
+% \tl{cite and tell I use Pytorch now or later?}
+
+% \begin{figure}[ht]
+%     \centering
+%     \def\svgwidth{.5\textwidth}
+%     \includesvg{./sources_images/nn_logreg}
+%     \caption{Multinomial \logreg viewed as a neural network. The data has $10$ features and $C=5$. Results from each class nodes are passed to the softmax activation layer to return probabilities. Then the highest probability indicates the class.}
+%     \label{fig:logreg_nn}
+% \end{figure}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% Logreg on CIFAR-10H
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \section{Taking into account human uncertainty with CIFAR-10H}
+
+% Generally in supervised setting, for example image classification, each image is associated to one label.
+% Although very useful in practice, the cross-entropy is reduced to a single term, there is absolutly no ambiguity, it is not realistic in all situations.
+
+% \begin{figure}[ht]
+% 	\begin{subfigure}{.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth, clip, trim={.5cm .5cm .5cm 1cm}]{bird.pdf}
+% 		\caption{Image of bird}
+%         \label{fig:bird}
+% 	\end{subfigure}
+% 	\begin{subfigure}{.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth, clip, trim={.5cm .5cm .5cm 1cm}]{deer_horse_dog.pdf}
+% 		\caption{What is it?}
+%         \label{fig:deer_horse}
+% 	\end{subfigure}
+% 	\caption{Some images from CIFAR-10 may not be directly recognized by everyone from one of the available labels.}
+%     \label{fig:uncertainty_cifar10}
+% \end{figure}
+
+% CIFAR-10 is a good example of this situation. As it is visible on \Cref{fig:uncertainty_cifar10}, some images with no doubt belong to one category. \Cref{fig:bird} is a bird, not anything else.
+% However, with \Cref{fig:deer_horse} it is difficult to know if this is a horse, a deer, a dog or even a frog? So for a human it is not a simple task to classify this kind of images.
+% There is some uncertainty in the label assignation. And discard it would be discarding some information. We rarely have a doubt to choose between a truck and a cat. But more between a cat and dog.
+
+% \medskip
+
+% So the idea between CIFAR-10H \citep{peterson2019human} was to save this human uncertainty. On the $10$k images from the test set of CIFAR-10, they asked humans to give a label to these images. And saved the distribution of the labels.
+% The training set of $50$k images of CIFAR-10 thus becomes a very large test set for us.
+% Painstakingly, this means that now each label $y$ is such that $y\in \cY=\left\{u \in \bbR^{10}, \sum_{i=1}^{10} u_i = 1, u_i\geq 0\right\}$.
+
+% \subsection{Preprocessing and data whitening}
+
+% The usual way to preprocess the data $X \in \bbR^{n\times p}$ for a \logreg would be to apply the standardization from \Cref{eq:standard}:
+
+% \begin{align} \label{eq:standard}
+%     \frac{X - \mu}{\sigma}\enspace,
+% \end{align}
+
+% with $\mu$ and $\sigma$ the mean and standard-deviation of $X$. But let's take things back into our situation and consider our images.
+% Wether we are considering a training, validation or testing sample, the number of features in our dataset will not change.
+% Each image $x_i$ is made of $32\times 32$ pixels, and each pixel is encoded as RGB. Sum total, there is $3\times 32^2$ features in our dataset.
+% Dataset made of images, so it is not a big leap to think that two pixels next to each other might be highly correlated and two pixels at opposite side of the image might not.
+% To avoid this, we would in fact like to transform our data such that the covariance matrix is the identity matrix (or not "far" from it at least, we will see about that later).
+
+% \medskip
+
+% To do so, the process we choose is to use data whitening \citep{pal2016preprocessing}. Denoting $\Sigma \in \bbR^{p\times p}$ the covariance matrix of our centered data $X$ (in practice it is the training dataset that is used to avoid any leakage of information),
+% we are in fact looking for a transformation $W \in \bbR^{p\times p}$ such that:
+
+% \[Y = XW^\top\quad \text{and}\quad W^\top W = \Sigma^{-1}\enspace.\]
+
+% \begin{proposition}
+%     There is an infinite number of possibilities to choose for $W$.
+% \end{proposition}
+% \begin{proof}
+%     Let $R=QW$ with $Q$ an orthogonal matrix \ie such that $Q^\top Q=QQ^\top = \Id$. Then:
+%     \[R^\top R = (QW)^\top (QW) = W^\top Q^\top Q W = W^\top W = \Sigma^{-1}\enspace.\]
+% \end{proof}
+
+% As there are infinitely many matrices to choose from, we need to find constraints (some empirical) to help us decide.
+% The first common decision is to only consider matrices $W$ such that $W=\Sigma^{-\frac{1}{2}}$. This also means consider symmetric matrices.
+% Then, amongst several methods that exist, we choose to consider the Zero Components Analysis (ZCA) whitening (also known as Mahalanobis) not only because the method to compute the transformation is actually quite simple,
+% but also and especially because it is a way to minimize the $L^2$ norm between our data and the whitened result \citep{kessy2018optimal}.
+% Why is this property very interesting for us? Because the image obtained, as we can see in \Cref{fig:demo_whitening} will still be recognizable (with enhanced edges) and not be changed in ways that would completely override the existing structure.
+% Another whitening method very closely related to ZCA is the PCA whitening. In fact, only they are only one rotation away from each other as we will see in the construction.
+% However, the PCA whitening is about representing the variations in the data and not being close to the original image.
+
+% \begin{figure}[ht]
+% 	\begin{subfigure}{.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth, clip, trim={.5cm .5cm .5cm 1cm}]{original_cifar.pdf}
+% 		\caption{Original}
+% 	\end{subfigure}
+% 	\begin{subfigure}{.45\textwidth}
+% 		\centering
+% 		\includegraphics[width=\textwidth, clip, trim={.5cm .5cm .5cm 1cm}]{whitened_cifar.pdf}
+% 		\caption{Centered and whitened}
+% 	\end{subfigure}
+% 	\caption{Visual effect of whitening data on CIFAR-10 images. Edges are more visible now.}
+%     \label{fig:demo_whitening}
+% \end{figure}
+
+
+% In \Cref{algo:ZCA_whitening} we should note that taking the first $k\in\bbN^*$ columns of the basis $U$ with decreasing eigenvalues would simply lead to a approximation of the covariance matrix.
+% This is useful for data compression and also accelerate computation. Also, using $W=(\Lambda + \epsilon)^{-\frac{1}{2}} U^\top$ is the PCA whitening with the transformation $Y=WX$.
+% Finally, by dividing by the inverse square root of the eigenvalues (forgetting the $\epsilon$) the ZCA transformation standardizes the features, so no need to compute the standard deviation before.
+
+
+% \end{document}

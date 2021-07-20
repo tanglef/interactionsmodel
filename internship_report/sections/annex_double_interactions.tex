@@ -1,0 +1,125 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\chapter{Double interactions equivalence}\label{chap:an_double_equiv}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FULL vs not FULL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+For the interactions, the vector $\Theta$ considered was
+in $\bbR^{\frac{p(p+1)}{2}}$.
+This implies that we removed all the feature-interactions which occurred more
+than once in the matrix $Z$.
+However, we could also consider to keep all of the interactions,
+meaning have $\widetilde Z\in\bbR^{n\times p^2}$ and
+$\widetilde\Theta\in\bbR^{p^2}$
+the full versions, with a supplementary constraint on the symmetry of the
+coefficients in $\widetilde\Theta$.
+With the notations of \Cref{chap:GLM}, if we exclude redundant interactions,
+then $K=q=\nicefrac{p(p+1)}{2}$, else
+$K=\widetilde q=p^2$. In the later case, we write $\widetilde Z$ the interaction
+matrix. The problem is then:
+\begin{equation}\label{eq:full}  \tag{$\cP_2$}
+\widehat{p}
+	\in \min_{\substack{\beta \in \bbR^p \\
+	 				   \widetilde \Theta \in \bbR^{p\times p}}}
+	\frac{1}{2n}\norm{y - X\beta - \widetilde Z\widetilde \Theta}_2^2 +
+	g^{(1)}(\beta) + g^{(2)}(\widetilde \Theta) +
+	\iota(\widetilde \Theta_{\tau_{\widetilde q}(i,j)}
+	= \widetilde \Theta_{\tau_{\widetilde q}(j,i)}) \enspace.
+\end{equation}
+%
+where $\iota(\widetilde \Theta_{\tau_{\widetilde q}(i,j)}=
+	   \widetilde \Theta_{\tau_{\widetilde q}(j,i)}) = 0$
+if the condition is verified and $+\infty$ o.w.
+First, we study $y - X\beta - \widetilde Z\widetilde \Theta$, with
+the symmetry constraint:
+\begin{align*}
+	y - X\beta - \widetilde Z\widetilde \Theta
+	& = y - X\beta - \sum_{(i,j)\in [p]^2}
+		\widetilde Z_{ij} \widetilde \Theta_{ij} \\
+	& = y - X\beta - 2\sum_{i\in[p]}\sum_{j>i}
+		\widetilde Z_{\tau_q(i,j)}
+		\widetilde \Theta_{\tau_q(i,j)} -
+			\sum_{i\in [p]} \widetilde Z_{\tau_q(i,i)}
+			\widetilde \Theta_{\tau_q(i,i)} \\
+	& = y - X\beta - \sum_{i\in[p]}\sum_{j>i}
+		\widetilde Z_{\tau_q(i,j)} 2\widetilde \Theta_{\tau_q(i,j)} -
+			\sum_{i\in [p]} Z_{\tau_q(i,i)} \Theta_{\tau_q(i,i)}
+			\enspace.
+\end{align*}
+
+Posing $\Theta_{\tau_q(i,j)} = 2 \widetilde\Theta_{\tau_q(i,j)}$
+for $i\neq j$, we thus get
+\begin{align*}
+	\frac{1}{2n}\norm{y - X\beta - \widetilde Z\widetilde \Theta}_2^2 &
+	= \frac{1}{2n}\norm{y - X\beta -
+		\sum_{i\in[p]}\sum_{j>i} Z_{\tau_q(i,j)} \Theta_{\tau_q(i,j)} -
+		\sum_{i\in [p]} Z_{\tau_q(i,i)} \Theta_{\tau_q(i,i)}}_2^2 \\
+	&= \frac{1}{2n}\norm{y - X\beta - Z \Theta}_2^2 \enspace.
+\end{align*}
+
+We execute the same decomposition on the penalties depending
+on $\widetilde\Theta$.
+This leads to modifying $g^{(2)}$ as follows:
+\begin{align*}
+	g^{(2)}(\widetilde\Theta)
+	&= \lambda_{\widetilde\Theta, \ell_1}
+	\sum_{i\in [p]}\abs{\widetilde\Theta_{\tau_q(i,i)}} +
+		2\lambda_{\widetilde\Theta, \ell_1} \sum_{i>j}
+			\abs{\widetilde\Theta_{\tau_q(i,j)}} +
+ 			\frac{\lambda_{\widetilde\Theta, \ell_2}}{2}
+			\sum_{i\in [p]}\widetilde\Theta_{\tau_q(i,i)}^2 +
+			\lambda_{\widetilde\Theta, \ell_2}\sum_{i>j}
+			\widetilde\Theta_{\tau_q(i,j)}^2 \\
+ 	& = \lambda_{\Theta, \ell_1} \sum_{i\in [p]}
+	 	\abs{\widetilde\Theta_{\tau_q(i,i)}} +
+		\lambda_{\Theta, \ell_1} \sum_{i>j} \abs{\Theta_{\tau_q(i,j)}} +
+	 	\frac{\lambda_{\Theta, \ell_2}}{2} \sum_{i\in [p]}\Theta_{\tau_q(i,i)}^2 +
+	 	\frac{\lambda_{\Theta, \ell_2}}{2}\sum_{i>j}
+	 	\left(
+			\frac{\Theta_{\tau_q(i,j)}}{\sqrt{2}}
+		\right)^2 \enspace,
+\end{align*}
+using the same variable change for non-diagonal terms. Considering as reference
+the problem in dimension $q=\nicefrac{p(p+1)}{2}$, then we only need to multiply
+instead of dividing in the $\ell_2$ penalty.
+So to resume, solving $(\cP)$ in dimension $q$ is equivalent to solving:
+\begin{equation}\label{eq:equiv_full}
+	\begin{split}
+	\widehat{p}
+	  = \min_{\substack{\beta \in \bbR^p \\
+	 					\widetilde \Theta \in \bbR^{p\times p}}}
+	& \frac{1}{2n}\norm{y - X\beta - \widetilde Z\widetilde \Theta}_2^2 +
+	g^{(1)}(\beta) \\
+	& + \lambda_{\Theta, \ell_1}\norm{\widetilde\Theta}_1 +
+	\frac{\lambda_{\Theta, \ell_2}}{2}\sum_{i\in[p]}
+	\widetilde\Theta_{\tau_{\widetilde q(i,i)}}
+	 + \lambda_{\Theta, \ell_2}\sum_{i\in [p]}\sum_{j>i}
+	 \widetilde \Theta_{\tau_{\widetilde q(i,j)}}^2 +
+	 \iota(\widetilde \Theta_{\tau_{\widetilde q}(i,j)}
+	 =\widetilde \Theta_{\tau_{\widetilde q}(j,i)})
+	 \enspace.
+	\end{split}
+\end{equation}
+
+We then compute the proximal operator for the $\widetilde\Theta$ part with the
+separability of the components \citep[p.~135]{Beck17}, which
+leads to:
+\begin{itemize}
+	\item if $i=j$:
+	\[\prox_{\mu\lambda_{\Theta, \ell_1}\left(|\cdot| +
+	\frac{\lambda_{\Theta, \ell_2}/
+		\lambda_{\Theta, \ell_1}}{2}(\cdot)^2\right)}(t)
+		=\frac{\sign(t)}{1+\mu\lambda_{\Theta, \ell_2}}
+		(|t| - \mu\lambda_{\Theta, \ell_1})_+ \enspace,\]
+	\item if $i\neq j$:
+	\[\prox_{\mu\lambda_{\Theta, \ell_1}\left(|\cdot| +
+	2\frac{\lambda_{\Theta, \ell_2}}{
+		\lambda_{\Theta,\ell_1}}(\cdot)^2\right)}(t)
+		=\frac{\sign(t)}{1+2\mu\lambda_{\Theta, \ell_2}}
+		(|t| - \mu\lambda_{\Theta, \ell_1})_+ \enspace.\]
+\end{itemize}
+
+\end{document}
